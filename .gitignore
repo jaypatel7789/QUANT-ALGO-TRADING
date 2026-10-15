@@ -85,3 +85,11 @@ start_quantdinger.bat
 docker-compose.yml
 package.json
 package-lock.json
+tests/test_algo_trading.py
+tests/test_completion_verifier.py
+tests/test_dashboard_api.py
+tests/test_execution_boundary.py
+tests/test_model_registry_and_team.py
+tests/test_skill_hub.py
+tests/test_task_store.py
+
