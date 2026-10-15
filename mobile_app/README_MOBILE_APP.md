@@ -59,7 +59,7 @@ Ensure your phone is connected to the same Wi-Fi network as your computer:
 
 ---
 
-## ☁️ Deploying to AWS Cloud VPS (`13.232.112.187`)
+## ☁️ Deploying to Dedicated Cloud VPS
 
 To make the app accessible from anywhere in the world (even when not on home Wi-Fi) without paying a single penny:
 

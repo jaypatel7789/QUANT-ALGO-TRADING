@@ -238,10 +238,10 @@ class MT5Bridge:
         floating = 13.42
         equity = round(balance + floating, 2)
         return {
-            "login": 900909696350,
-            "server": "SharkFunded-live",
-            "name": "Jay Kamleshbhai Patel",
-            "company": "Shark Funded Ltd.",
+            "login": 1000998877,
+            "server": "Demo-Interbank-Live",
+            "name": "Institutional Quantitative Trader",
+            "company": "Institutional Prop Trading",
             "balance": balance,
             "equity": equity,
             "margin": 185.20,

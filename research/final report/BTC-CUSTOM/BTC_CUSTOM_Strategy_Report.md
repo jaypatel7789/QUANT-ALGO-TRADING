@@ -29,7 +29,7 @@
 ## Tester Input Configuration
 `ini
 [Common]
-Login=1301597088
+Login=1000000000
 Server=XMGlobal-MT5 6
 
 [Tester]

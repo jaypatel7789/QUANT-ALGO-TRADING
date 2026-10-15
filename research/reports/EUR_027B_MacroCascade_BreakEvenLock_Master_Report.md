@@ -5,7 +5,7 @@
 - **Asset**: `EURUSD`
 - **Timeframe**: `H1`
 - **Execution Architecture**: Triple Macro Cascade (20/50/200 EMA) with Break-Even Profit Lock (1.0x Trigger, 2.0x TP, 0.6% Risk)
-- **Testing Engine**: MetaTrader 5 Engine Native Backtest (XMGlobal-MT5 6, Account `1301597088`)
+- **Testing Engine**: MetaTrader 5 Engine Native Backtest (XMGlobal-MT5 6, Account `1000000000`)
 - **Backtesting Range**: 2025.09.28 – 2026.09.28 (12 Full Months)
 
 ---

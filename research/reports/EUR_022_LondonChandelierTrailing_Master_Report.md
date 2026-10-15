@@ -5,7 +5,7 @@
 - **Asset**: `EURUSD`
 - **Timeframe**: `H1`
 - **Execution Architecture**: Institutional London ORB with Dynamic Asymmetric ATR Chandelier Trailing Stop (1.8x ATR, 0.6% Risk)
-- **Testing Engine**: MetaTrader 5 Engine Native Backtest (XMGlobal-MT5 6, Account `1301597088`)
+- **Testing Engine**: MetaTrader 5 Engine Native Backtest (XMGlobal-MT5 6, Account `1000000000`)
 - **Backtesting Range**: 2025.09.28 – 2026.09.28 (12 Full Months)
 
 ---

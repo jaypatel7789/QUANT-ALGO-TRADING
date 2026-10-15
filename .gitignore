@@ -51,5 +51,7 @@ cloud_deploy/cloudflared.exe
 mobile_app/backend/cloudflared.exe
 mobile_app/backend/tunnel.log
 mobile_app/backend/nohup.out
+research/PREVIOUS_SESSION_CHAT_HISTORY.md
+*.zip
 
 

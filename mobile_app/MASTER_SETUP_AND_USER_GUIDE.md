@@ -1,9 +1,9 @@
 # 🦈 Shark MT5 Sentinel - Mobile Command Center & Deployment Guide
 
 > **Production Release: Version 2.2.0**  
-> **Target Account:** Shark Funded Evaluation ($10,000 Capital | Account `#1301597088`)  
-> **Server:** `SharkFunded-Live` (XM Global MT5 Terminal)  
-> **Cloud VPS:** AWS EC2 `t3.micro` Mumbai (`13.232.112.187`)  
+> **Target Account:** Institutional Trading Evaluation ($10,000 Capital)  
+> **Server:** `Institutional-Live` (XM Global MT5 Terminal)  
+> **Cloud VPS:** Dedicated High-Availability Windows Server  
 
 ---
 
@@ -14,12 +14,13 @@ The backend server is **currently active and running** on your local machine:
 | Access Method | URL / Connection | Instructions |
 | :--- | :--- | :--- |
 | **Local PC Browser** | `http://127.0.0.1:8080/` | Open in Chrome, Edge, or Brave. |
-| **Mobile Phone (Wi-Fi)** | `http://10.23.54.44:8080/` | Open on your smartphone (connected to the same Wi-Fi). |
+| **Mobile Phone (LAN)** | `http://<YOUR_LOCAL_IP>:8080/` | Open on your smartphone (connected to the same Wi-Fi). |
 | **Master Security PIN** | `7777` | Enter on the numpad to unlock controls. |
 
 ### How to Install as an App on Smartphone (PWA):
-- **iPhone / iOS Safari:** Open `http://10.23.54.44:8080/` $\rightarrow$ Tap the **Share** button (square with arrow) $\rightarrow$ Tap **"Add to Home Screen"**.
-- **Android / Chrome:** Open `http://10.23.54.44:8080/` $\rightarrow$ Tap the **Three Dots (Menu)** $\rightarrow$ Tap **"Install App"** or **"Add to Home screen"**.
+- **iPhone / iOS Safari:** Open `http://<YOUR_LOCAL_IP>:8080/` $\rightarrow$ Tap the **Share** button (square with arrow) $\rightarrow$ Tap **"Add to Home Screen"**.
+- **Android / Chrome:** Open `http://<YOUR_LOCAL_IP>:8080/` $\rightarrow$ Tap the **Three Dots (Menu)** $\rightarrow$ Tap **"Install App"** or **"Add to Home screen"**.
+
 
 ---
 
@@ -77,29 +78,26 @@ The backend server is **currently active and running** on your local machine:
 
 ---
 
-## 🚀 Cloud VPS 24/7 Deployment Instructions (`13.232.112.187`)
+## 🚀 Cloud VPS 24/7 Deployment Instructions
 
-Deploying to your AWS Cloud VPS gives you access anywhere in the world over mobile cellular data (4G/5G) without opening any ports on AWS.
+Deploying to a dedicated Cloud VPS gives you access anywhere in the world over mobile cellular data (4G/5G) without opening any inbound firewall ports.
 
-### Pre-requisites & Credentials:
-- **VPS Host:** `13.232.112.187`
+### Pre-requisites & Server Setup:
+- **VPS Host:** `<YOUR_CLOUD_VPS_IP>`
 - **Username:** `Administrator`
-- **Password:** `dBQ%o4Ev6)!SVxJ7CGvouinEyodO6x-e`
-- **RDP Shortcut:** Double click `f:\multi agent\cloud\Connect_MT5_Cloud_VPS.rdp`
-- **Deployment Zip:** `f:\multi agent\Shark_MT5_Sentinel_Mobile_App.zip` (already prepared)
+- **Password:** `<YOUR_SECURE_PASSWORD>`
 
 ---
 
 ### Step-by-Step Deployment:
 
 #### Step 1: Connect to VPS via Remote Desktop
-1. Open Remote Desktop Connection (`mstsc`) or double-click `Connect_MT5_Cloud_VPS.rdp`.
-2. Connect to `13.232.112.187` with username `Administrator` and the password above.
+1. Open Remote Desktop Connection (`mstsc`).
+2. Connect to your VPS host with your administrator credentials.
 
 #### Step 2: Copy the Application Archive
-1. On your local machine, copy `f:\multi agent\Shark_MT5_Sentinel_Mobile_App.zip`.
-2. Paste it directly onto the Cloud VPS Desktop.
-3. Right-click the zip file $\rightarrow$ **Extract All...** to `C:\SharkSentinel`.
+1. On your local machine, copy the application files to the VPS desktop or directory.
+2. Extract the files to `C:\SharkSentinel`.
 
 #### Step 3: Run the Cloud Launcher
 1. Open `C:\SharkSentinel\cloud_deploy\start_sentinel_cloud.bat`.
@@ -110,8 +108,9 @@ Deploying to your AWS Cloud VPS gives you access anywhere in the world over mobi
    - Launch an encrypted Cloudflare HTTPS Tunnel.
 3. Look at the console window for your unique public HTTPS URL:
    ```
-   https://shark-sentinel-xxxx.trycloudflare.com
+   https://your-tunnel-name.trycloudflare.com
    ```
+
 
 #### Step 4: Open on Your Phone
 1. Open that `https://*.trycloudflare.com` URL on your iPhone Safari or Android Chrome.

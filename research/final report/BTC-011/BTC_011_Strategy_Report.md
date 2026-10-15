@@ -68,7 +68,7 @@ BTC-011 implements the Easley, López de Prado, and O'Hara **Volume-Synchronized
 ### Optimized H1 Suite (`tester_BTC011_H1_Optimized.ini` / `tester_BTC011_H1.ini`)
 ```ini
 [Common]
-Login=1301597088
+Login=1000000000
 Server=XMGlobal-MT5 6
 
 [Tester]

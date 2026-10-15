@@ -39,7 +39,7 @@ The **Shark MT5 Sentinel Platform** bridges the gap between high-level academic 
 3. **Shark MT5 Sentinel Cloud VPS Bridge**: A resilient, 24/7 background daemon running on an **AWS EC2 Windows Server** instance, interfacing directly with native 64-bit MetaTrader 5 via low-latency Python IPC.
 4. **Mobile Command Center (PWA)**: A dark-glassmorphism mobile progressive web application accessible securely from anywhere in the world over encrypted Cloudflare Zero-Trust tunnels, protected by SHA-256 PIN authentication and hardware biometrics.
 
-> 🛡️ **Production Verification**: The live Sentinel backend is actively deployed on AWS EC2 Windows Server (`i-082a917bee70b30d1`), managing institutional broker feeds and live positions for account `#900909696350` (`Jay Kamleshbhai Patel`, `SharkFunded-live`) with 24/7 background uptime.
+> 🛡️ **Production Verification**: The live Sentinel backend is actively deployed on a dedicated high-availability Windows Server Cloud VPS, managing institutional broker feeds and live execution across Gold, EUR, and Crypto with 24/7 background uptime.
 
 ---
 
@@ -309,7 +309,7 @@ The entire system is deployed on an **AWS EC2 Windows Server** instance for perm
 ```text
 [AWS Cloud Region: ap-south-1 (Mumbai)]
 ┌────────────────────────────────────────────────────────────────────────┐
-│  EC2 Windows Server 2022 Instance: i-082a917bee70b30d1 (t3.medium)     │
+│  EC2 Windows Server 2022 Instance: Dedicated Cloud VPS (t3.medium)     │
 │                                                                        │
 │  ┌────────────────────────┐         ┌───────────────────────────────┐  │
 │  │  MetaTrader 5 Terminal │ ◄──────►│  FastAPI Sentinel Bridge      │  │

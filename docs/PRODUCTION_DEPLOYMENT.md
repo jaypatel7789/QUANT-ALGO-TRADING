@@ -44,7 +44,7 @@ The script will:
 1. Verify Python and MetaTrader 5 paths.
 2. Initialize Cloudflare zero-trust quick tunnel.
 3. Start the FastAPI Sentinel daemon on port `8080`.
-4. Provide the public HTTPS tunnel URL for mobile access (e.g. `https://republic-politics-artistic-sample.trycloudflare.com`).
+4. Output the ephemeral secure HTTPS tunnel URL for mobile access (e.g. `https://your-unique-subdomain.trycloudflare.com`).
 
 ---
 

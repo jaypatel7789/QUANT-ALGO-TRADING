@@ -3,7 +3,7 @@ MetaTrader 5 Live BTC/USD Algorithmic Trading Bot
 Executes the Adaptive Trend-Following Strategy (EMA 21/55 + RSI + ATR Trailing Stop)
 directly on the active MetaTrader 5 terminal.
 
-Broker: XMGlobal-MT5 6 (Account 1301597088)
+Broker: XMGlobal-MT5 6 (Interbank Feed)
 Symbol: BTCUSD#
 """
 import os
