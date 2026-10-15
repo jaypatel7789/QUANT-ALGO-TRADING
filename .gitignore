@@ -1,0 +1,55 @@
+# Environment and secrets
+.env
+*.env
+!.env.example
+.local_session_token
+
+# Virtual environment and node
+venv/
+node_modules/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.sqlite3
+*.db
+
+# Cloned repositories (external sources)
+repos/
+
+# Execution workspace output and temp
+workspace/
+*.log
+*.zip
+*.pkl
+data/cache/
+data/binance_futures/
+scratch/
+
+# Cloud Server Credentials & Private Keys (Security Protection)
+cloud/*.pem
+cloud/*.rdp
+cloud/VPS_CREDENTIALS.md
+*.pem
+*.rdp
+
+# Proprietary Algorithmic Trading Code & Binaries (Protected IP)
+*.mq5
+*.ex5
+*.set
+*.ini
+multi agent all btc strategy/
+research/approved/
+research/staging/
+research/jay report/
+research/reports/*.png
+research/**/*.html
+research/**/*.xlsx
+research/**/*.pdf
+cloud_deploy/cloudflared.exe
+mobile_app/backend/cloudflared.exe
+mobile_app/backend/tunnel.log
+mobile_app/backend/nohup.out
+
+

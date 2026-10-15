@@ -1,0 +1,77 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'MetaTrader 5 Windows Server 2022 Cloud VPS - AWS Free Tier Eligible'
+
+Parameters:
+  KeyPairName:
+    Type: AWS::EC2::KeyPair::KeyName
+    Description: Name of an existing EC2 KeyPair to enable RDP access
+  LatestWindowsAmiId:
+    Type: 'AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>'
+    Default: '/aws/service/ami-windows-latest/Windows_Server-2022-English-Full-Base'
+    Description: SSM Parameter for the latest Windows Server 2022 Full Base AMI
+
+Resources:
+  MT5SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable RDP access for MetaTrader 5 Cloud VPS
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 3389
+          ToPort: 3389
+          CidrIp: 0.0.0.0/0
+          Description: RDP access from anywhere
+
+  MT5Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t3.micro
+      ImageId: !Ref LatestWindowsAmiId
+      KeyName: !Ref KeyPairName
+      SecurityGroupIds:
+        - !Ref MT5SecurityGroup
+      BlockDeviceMappings:
+        - DeviceName: /dev/sda1
+          Ebs:
+            VolumeSize: 30
+            VolumeType: gp3
+            DeleteOnTermination: true
+      Tags:
+        - Key: Name
+          Value: MT5-AlgoTrading-CloudVPS
+      UserData:
+        Fn::Base64: !Sub |
+          <powershell>
+          # 1. Configure 6GB PageFile (Virtual RAM) on C: drive for 1GB t3.micro
+          Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -Name 'PagingFiles' -Value 'C:\pagefile.sys 4096 8192'
+
+          # 2. Disable Sleep, Hibernation, and set High Performance Power Scheme
+          powercfg /change standby-timeout-ac 0
+          powercfg /change hibernate-timeout-ac 0
+          powercfg /change disk-timeout-ac 0
+
+          # 3. Disable unnecessary background services to conserve RAM
+          Stop-Service -Name Spooler -Force -ErrorAction SilentlyContinue
+          Set-Service -Name Spooler -StartupType Disabled -ErrorAction SilentlyContinue
+
+          # 4. Download MetaTrader 5 Official Setup to Desktop
+          $desktopPath = "C:\Users\Administrator\Desktop"
+          if (-not (Test-Path $desktopPath)) { New-Item -ItemType Directory -Path $desktopPath -Force }
+          $setupPath = "$desktopPath\mt5setup.exe"
+          [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+          Invoke-WebRequest -Uri "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe" -OutFile $setupPath
+
+          # 5. Run silent installation
+          Start-Process -FilePath $setupPath -ArgumentList "/auto" -Wait
+          </powershell>
+
+Outputs:
+  InstanceId:
+    Description: MT5 Instance ID
+    Value: !Ref MT5Instance
+  PublicIP:
+    Description: Public IP Address for Remote Desktop (RDP)
+    Value: !GetAtt MT5Instance.PublicIp
+  PublicDNS:
+    Description: Public DNS Name
+    Value: !GetAtt MT5Instance.PublicDnsName

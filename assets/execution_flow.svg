@@ -1,0 +1,93 @@
+<svg width="1100" height="380" viewBox="0 0 1100 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="step-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#0a0f1d" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1100" height="380" rx="16" fill="#040711" stroke="#1e293b" stroke-width="2"/>
+
+  <text x="550" y="40" font-family="'Outfit', sans-serif" font-size="22" font-weight="800" fill="#ffffff" text-anchor="middle">
+    LIVE EXECUTION RETRY LADDER &amp; SUPERVISOR FLOW
+  </text>
+  <text x="550" y="65" font-family="'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" text-anchor="middle">
+    Sub-Millisecond Order Routing • Slippage Backoff • Atomic State Guard
+  </text>
+
+  <!-- Step 1: Signal Generation -->
+  <g transform="translate(50, 100)">
+    <rect width="170" height="220" rx="10" fill="url(#step-bg)" stroke="#38bdf8" stroke-width="1.2"/>
+    <rect width="170" height="30" rx="10" fill="#0284c7" fill-opacity="0.2"/>
+    <text x="85" y="20" font-family="'Outfit', sans-serif" font-size="11" font-weight="700" fill="#38bdf8" text-anchor="middle">1. ALPHA TRIGGER</text>
+    <text x="15" y="55" font-family="'Inter', sans-serif" font-size="10.5" fill="#cbd5e1">• Strategy Bar Close</text>
+    <text x="15" y="75" font-family="'Inter', sans-serif" font-size="10.5" fill="#cbd5e1">• Microstructure Filter</text>
+    <text x="15" y="95" font-family="'Inter', sans-serif" font-size="10.5" fill="#cbd5e1">• VPIN Toxicity Gate</text>
+    <text x="15" y="115" font-family="'Inter', sans-serif" font-size="10.5" fill="#cbd5e1">• ADX &gt;= 22.0 Regime</text>
+    <text x="15" y="145" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8">Payload generated with StopLoss &amp; TakeProfit</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <line x1="225" y1="210" x2="265" y2="210" stroke="#00f2fe" stroke-width="2" stroke-dasharray="4 4"/>
+  <polygon points="265,210 257,205 257,215" fill="#00f2fe"/>
+
+  <!-- Step 2: Policy & Shield Inspection -->
+  <g transform="translate(270, 100)">
+    <rect width="170" height="220" rx="10" fill="url(#step-bg)" stroke="#f59e0b" stroke-width="1.2"/>
+    <rect width="170" height="30" rx="10" fill="#d97706" fill-opacity="0.2"/>
+    <text x="85" y="20" font-family="'Outfit', sans-serif" font-size="11" font-weight="700" fill="#fbbf24" text-anchor="middle">2. SENTINEL SHIELD</text>
+    <text x="15" y="55" font-family="'Inter', sans-serif" font-size="10.5" fill="#cbd5e1">• Master Algo Enabled?</text>
+    <text x="15" y="75" font-family="'Inter', sans-serif" font-size="10.5" fill="#cbd5e1">• EA Magic Active?</text>
+    <text x="15" y="95" font-family="'Inter', sans-serif" font-size="10.5" fill="#cbd5e1">• News Shield Standby?</text>
+    <text x="15" y="115" font-family="'Inter', sans-serif" font-size="10.5" fill="#cbd5e1">• Daily Floor Intact?</text>
+    <text x="15" y="145" font-family="'JetBrains Mono', monospace" font-size="9" fill="#10b981">✓ All 4 Guards Passed</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <line x1="445" y1="210" x2="485" y2="210" stroke="#00f2fe" stroke-width="2" stroke-dasharray="4 4"/>
+  <polygon points="485,210 477,205 477,215" fill="#00f2fe"/>
+
+  <!-- Step 3: Primary IOC Order Attempt -->
+  <g transform="translate(490, 100)">
+    <rect width="170" height="220" rx="10" fill="url(#step-bg)" stroke="#10b981" stroke-width="1.2"/>
+    <rect width="170" height="30" rx="10" fill="#059669" fill-opacity="0.2"/>
+    <text x="85" y="20" font-family="'Outfit', sans-serif" font-size="11" font-weight="700" fill="#10b981" text-anchor="middle">3. IOC EXECUTION</text>
+    <text x="15" y="55" font-family="'Inter', sans-serif" font-size="10.5" fill="#cbd5e1">• Immediate-or-Cancel</text>
+    <text x="15" y="75" font-family="'Inter', sans-serif" font-size="10.5" fill="#cbd5e1">• Strict 2-Pip Slippage</text>
+    <text x="15" y="95" font-family="'Inter', sans-serif" font-size="10.5" fill="#cbd5e1">• Sub-10ms Fill Window</text>
+    <text x="15" y="125" font-family="'JetBrains Mono', monospace" font-size="9" fill="#f8fafc">Return code check: 10009 (TRADE_DONE)</text>
+    <text x="15" y="155" font-family="'Inter', sans-serif" font-size="9" fill="#94a3b8">If requoted → Stage 4</text>
+  </g>
+
+  <!-- Arrow 3 -->
+  <line x1="665" y1="210" x2="705" y2="210" stroke="#00f2fe" stroke-width="2" stroke-dasharray="4 4"/>
+  <polygon points="705,210 697,205 697,215" fill="#00f2fe"/>
+
+  <!-- Step 4: FOK / Return Retry Ladder -->
+  <g transform="translate(710, 100)">
+    <rect width="170" height="220" rx="10" fill="url(#step-bg)" stroke="#a855f7" stroke-width="1.2"/>
+    <rect width="170" height="30" rx="10" fill="#7e22ce" fill-opacity="0.2"/>
+    <text x="85" y="20" font-family="'Outfit', sans-serif" font-size="11" font-weight="700" fill="#c084fc" text-anchor="middle">4. RETRY LADDER</text>
+    <text x="15" y="55" font-family="'Inter', sans-serif" font-size="10.5" fill="#cbd5e1">• Attempt FOK Fill</text>
+    <text x="15" y="75" font-family="'Inter', sans-serif" font-size="10.5" fill="#cbd5e1">• Slippage +1 Pip Step</text>
+    <text x="15" y="95" font-family="'Inter', sans-serif" font-size="10.5" fill="#cbd5e1">• Backoff: 50ms Exponential</text>
+    <text x="15" y="115" font-family="'Inter', sans-serif" font-size="10.5" fill="#cbd5e1">• Max 3 Attempts Allowed</text>
+    <text x="15" y="145" font-family="'JetBrains Mono', monospace" font-size="9" fill="#cbd5e1">Prevents toxic fills in flash moves</text>
+  </g>
+
+  <!-- Arrow 4 -->
+  <line x1="885" y1="210" x2="925" y2="210" stroke="#00f2fe" stroke-width="2" stroke-dasharray="4 4"/>
+  <polygon points="925,210 917,205 917,215" fill="#00f2fe"/>
+
+  <!-- Step 5: Trade Live & Trail BE -->
+  <g transform="translate(930, 100)">
+    <rect width="140" height="220" rx="10" fill="url(#step-bg)" stroke="#10b981" stroke-width="1.2"/>
+    <rect width="140" height="30" rx="10" fill="#059669" fill-opacity="0.2"/>
+    <text x="70" y="20" font-family="'Outfit', sans-serif" font-size="11" font-weight="700" fill="#34d399" text-anchor="middle">5. BE &amp; RISK</text>
+    <text x="12" y="55" font-family="'Inter', sans-serif" font-size="10" fill="#cbd5e1">• BE Lock at 1.5R</text>
+    <text x="12" y="75" font-family="'Inter', sans-serif" font-size="10" fill="#cbd5e1">• WebSocket Stream</text>
+    <text x="12" y="95" font-family="'Inter', sans-serif" font-size="10" fill="#cbd5e1">• PnL Attribution</text>
+    <text x="12" y="115" font-family="'Inter', sans-serif" font-size="10" fill="#cbd5e1">• Telemetry Broadcast</text>
+    <text x="12" y="145" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#10b981">Zero-Loss Protection Active</text>
+  </g>
+</svg>

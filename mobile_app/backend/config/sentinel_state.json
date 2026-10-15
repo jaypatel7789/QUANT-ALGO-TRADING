@@ -1,0 +1,26 @@
+{
+  "pin_hash": "41c991eb6a66242c0454191244278183ce58cf4a6bcd372f799e4b9cc01886af",
+  "master_algo_enabled": true,
+  "news_shield_enabled": true,
+  "news_block_before_min": 35,
+  "news_block_after_min": 20,
+  "algo_states": {
+    "11018": true,
+    "21018": true,
+    "14024": true,
+    "24024": true,
+    "14025": true,
+    "14019": true,
+    "14013": true,
+    "11011": true,
+    "11012": true,
+    "100301": true,
+    "100501": true,
+    "100601": true,
+    "100901": true,
+    "101201": true,
+    "101701": true,
+    "9991212": true
+  },
+  "last_updated": "2026-10-04T20:58:05.787666"
+}

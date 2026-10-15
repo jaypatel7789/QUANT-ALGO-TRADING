@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Shark MT5 Sentinel | Mobile Command Center</title>
+  
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0a0e17">
+  
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+  
+  <!-- Modern Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css?v=3.7">
+</head>
+<body>
+  <!-- Ambient Glow Background -->
+  <div class="ambient-glow cyan-glow"></div>
+  <div class="ambient-glow purple-glow"></div>
+
+  <!-- Top App Bar -->
+  <header class="top-nav">
+    <div class="brand">
+      <div class="brand-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <div>
+        <h1 class="brand-title">SHARK SENTINEL</h1>
+        <p class="brand-sub">CLOUD MT5 COMMAND</p>
+      </div>
+    </div>
+    <div class="nav-status">
+      <button id="soundToggleBtn" class="nav-icon-btn" title="Toggle Sound FX">
+        <svg id="soundOnIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        <svg id="soundOffIcon" style="display:none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="1" y1="1" x2="23" y2="23"/><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 1.48 3.54M19.07 4.93a10 10 0 0 1 1.77 5.07"/></svg>
+      </button>
+      <button id="lockAppBtn" class="nav-icon-btn" title="Lock Command Center">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </button>
+      <div id="connectionPill" class="status-pill online">
+        <span class="pulse-dot"></span>
+        <span id="connectionText">CONNECTED</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Scrollable Container -->
+  <main class="main-container">
+    
+    <!-- MASTER CONTROL BANNER -->
+    <section class="master-banner">
+      <div class="banner-left">
+        <div class="label-tiny">MASTER ALGO TRADING</div>
+        <div id="masterStatusBadge" class="status-badge active">RUNNING (16 ALGOS)</div>
+      </div>
+      <div class="banner-right">
+        <label class="toggle-switch">
+          <input type="checkbox" id="masterAlgoToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </section>
+
+    <!-- LIVE MARKET TICKER RIBBON -->
+    <section class="market-ticker-ribbon">
+      <div class="ticker-item">
+        <span class="ticker-symbol">XAUUSD</span>
+        <span class="ticker-price text-emerald" id="tickerGoldPrice">$2,661.15</span>
+        <span class="ticker-change text-emerald">+0.42%</span>
+      </div>
+      <div class="ticker-divider"></div>
+      <div class="ticker-item">
+        <span class="ticker-symbol">BTCUSD</span>
+        <span class="ticker-price text-cyan" id="tickerBtcPrice">$65,940.00</span>
+        <span class="ticker-change text-cyan">+1.18%</span>
+      </div>
+      <div class="ticker-divider"></div>
+      <div class="ticker-item">
+        <span class="ticker-symbol">EURUSD</span>
+        <span class="ticker-price" id="tickerEurPrice">$1.0845</span>
+        <span class="ticker-change text-dim">+0.05%</span>
+      </div>
+    </section>
+
+    <!-- TAB CONTENT SECTIONS -->
+
+    <!-- TAB 1: DASHBOARD -->
+    <section id="tab-dashboard" class="tab-pane active">
+      <!-- Account Overview Card -->
+      <div class="card glass-card account-card">
+        <div class="card-header-flex">
+          <div>
+            <span class="badge-account" id="accountServer">SharkFunded-Live</span>
+            <span class="account-num" id="accountLogin">#1301597088</span>
+          </div>
+          <span class="mode-tag" id="bridgeMode">LIVE BRIDGE</span>
+        </div>
+        
+        <div class="balance-display">
+          <div class="label-sub">TOTAL EQUITY</div>
+          <div class="equity-value" id="accountEquity">$10,131.25</div>
+          <div class="floating-pnl positive" id="accountFloating">+$131.25 (+1.31%)</div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-box">
+            <span class="stat-label">Balance</span>
+            <span class="stat-value" id="accountBalance">$10,000.00</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-label">Free Margin</span>
+            <span class="stat-value" id="accountFreeMargin">$9,814.80</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-label">Margin Level</span>
+            <span class="stat-value" id="accountMarginLevel">5,510%</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-label">Open Trades</span>
+            <span class="stat-value highlight-cyan" id="dashboardTradeCount">2 Active</span>
+          </div>
+        </div>
+
+        <!-- Prop Firm Risk Shield Meters -->
+        <div class="prop-guard-box">
+          <div class="guard-header">
+            <span>SHARK FUNDED RISK SHIELD</span>
+            <span class="guard-status ok">PROTECTED</span>
+          </div>
+          
+          <div class="meter-group">
+            <div class="meter-label">
+              <span>Daily Loss Floor ($450.00 max)</span>
+              <span id="dailyLossText">$0.00 / 0.00%</span>
+            </div>
+            <div class="meter-bar-bg">
+              <div id="dailyLossBar" class="meter-bar-fill" style="width: 2%;"></div>
+            </div>
+          </div>
+
+          <div class="meter-group">
+            <div class="meter-label">
+              <span>Max Trailing Drawdown ($800.00 max)</span>
+              <span id="maxDDText">$0.00 / 0.00%</span>
+            </div>
+            <div class="meter-bar-bg">
+              <div id="maxDDBar" class="meter-bar-fill" style="width: 1%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Equity Growth Trajectory Chart -->
+      <div class="card glass-card chart-card">
+        <div class="card-title-flex">
+          <div>
+            <h3>EQUITY GROWTH TRAJECTORY</h3>
+            <div class="chart-subtitle">Phase 1 Target: $10,800 (+8%) | DD Floor: $9,200</div>
+          </div>
+          <span class="target-tag text-emerald" id="chartTargetTag">+1.31% Target</span>
+        </div>
+        <div class="chart-canvas-container">
+          <canvas id="equityChartCanvas" width="640" height="240"></canvas>
+          <div id="chartTooltip" class="chart-scrub-tooltip"></div>
+        </div>
+        <div class="chart-legend-row">
+          <div class="legend-chip"><span class="legend-dot cyan"></span> Live Equity ($10,131.25)</div>
+          <div class="legend-chip"><span class="legend-dot gold"></span> Target $10,800</div>
+          <div class="legend-chip"><span class="legend-dot crimson"></span> Floor $9,200</div>
+        </div>
+      </div>
+
+      <!-- Quick Action Grid -->
+      <div class="action-grid">
+        <button class="action-btn panic-btn" id="panicTriggerBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span>PANIC CLOSE ALL</span>
+        </button>
+        <button class="action-btn news-quick-btn" id="quickNewsBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span id="quickNewsLabel">NEWS SHIELD: ON</span>
+        </button>
+      </div>
+
+      <!-- Live Mini Watchlist -->
+      <div class="card glass-card">
+        <div class="card-title-flex">
+          <h3>ACTIVE TRADES ATTRIBUTION</h3>
+          <span class="sub-link" onclick="switchTab('trades')">View All</span>
+        </div>
+        <div id="miniTradesList" class="mini-trades-container">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: LIVE TRADES -->
+    <section id="tab-trades" class="tab-pane">
+      <div class="section-title-bar">
+        <h2>Active Positions</h2>
+        <span class="badge-count" id="activePositionCount">2</span>
+      </div>
+      <div id="fullTradesList" class="trades-full-container">
+        <!-- Live trade cards with SL/TP/BE and One-Tap Close -->
+      </div>
+    </section>
+
+    <!-- TAB 3: STRATEGIES -->
+    <section id="tab-algos" class="tab-pane">
+      <div class="section-title-bar">
+        <h2>Attached Algorithms</h2>
+        <span class="badge-count">16 Algos</span>
+      </div>
+      <div class="info-alert">
+        <span>Break-Even Lock is <strong>ENABLED (True)</strong> on all approved strategies.</span>
+      </div>
+      <div id="algosList" class="algos-grid">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- TAB 4: NEWS SHIELD -->
+    <section id="tab-news" class="tab-pane">
+      <div class="section-title-bar">
+        <h2>High-Impact News Shield</h2>
+        <span id="shieldActiveBadge" class="shield-badge stand-by">STAND-BY</span>
+      </div>
+
+      <!-- Timezone & System Clock Synchronization Bar -->
+      <div class="tz-sync-card">
+        <div class="tz-sync-header">
+          <span class="pulse-dot"></span>
+          <span>TIMEZONE SYNCHRONIZATION: INDIA (IST) & GLOBAL (UTC)</span>
+        </div>
+        <div class="tz-grid">
+          <div class="tz-box">
+            <span class="tz-sub">CLOUD SERVER / INDIA TIME</span>
+            <span id="newsClockIst" class="tz-time text-emerald">--:--:-- IST</span>
+          </div>
+          <div class="tz-box">
+            <span class="tz-sub">GLOBAL MARKET TIME (ALGO BASE)</span>
+            <span id="newsClockUtc" class="tz-time text-cyan">--:--:-- UTC</span>
+          </div>
+        </div>
+        <div class="tz-footnote">
+          ✓ News releases are converted to Indian Standard Time (IST) for your local schedule, while MT5 EAs execute on pure GMT/UTC market windows without clock drift.
+        </div>
+      </div>
+
+      <div class="card glass-card">
+        <div class="card-header-flex">
+          <h3>Auto-Shield Controller</h3>
+          <label class="toggle-switch">
+            <input type="checkbox" id="newsShieldToggle" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <p class="text-muted">Automatically freezes EA order execution during major macroeconomic volatility shocks (USD, EUR, GBP).</p>
+        
+        <div class="input-row">
+          <div class="input-field">
+            <label>Block Before (Min)</label>
+            <input type="number" id="blockBeforeInput" value="30" min="0" max="240">
+          </div>
+          <div class="input-field">
+            <label>Block After (Min)</label>
+            <input type="number" id="blockAfterInput" value="15" min="0" max="240">
+          </div>
+        </div>
+        <button class="btn-primary full-width" id="saveNewsSettingsBtn">Update News Shield Policy</button>
+      </div>
+
+      <div class="card glass-card">
+        <h3>Upcoming Economic Releases</h3>
+        <div id="newsEventsList" class="news-events-container">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: MT5 LIVE LOGS STREAM -->
+    <section id="tab-logs" class="tab-pane">
+      <div class="section-title-bar">
+        <div>
+          <h2>MT5 Live Terminal & EA Logs</h2>
+          <span class="sub-text">Direct streaming from MetaTrader 5 Terminal & MQL5 Engine</span>
+        </div>
+        <div class="status-pill online live-pill">
+          <span class="pulse-dot"></span>
+          <span id="logStreamStatus">LIVE</span>
+        </div>
+      </div>
+
+      <!-- Log Controls & Filters -->
+      <div class="card glass-card log-controls-card">
+        <!-- Category Filter Pills -->
+        <div class="log-categories-row">
+          <button class="log-filter-btn active" data-cat="all" onclick="filterLogsCategory('all')">ALL LOGS</button>
+          <button class="log-filter-btn" data-cat="experts" onclick="filterLogsCategory('experts')">MQL5 EXPERTS</button>
+          <button class="log-filter-btn" data-cat="terminal" onclick="filterLogsCategory('terminal')">TERMINAL CORE</button>
+          <button class="log-filter-btn" data-cat="watcher" onclick="filterLogsCategory('watcher')">SENTINEL DAEMON</button>
+        </div>
+
+        <!-- Search & Control Row -->
+        <div class="log-search-row">
+          <div class="search-input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="logSearchInput" placeholder="Filter by symbol, trade, magic # or keyword..." oninput="handleLogSearch(this.value)">
+            <button id="clearLogSearchBtn" class="clear-btn" onclick="clearLogSearch()" style="display:none;">&times;</button>
+          </div>
+          <div class="log-action-btns">
+            <button id="autoScrollToggleBtn" class="btn-sm active" onclick="toggleAutoScrollLogs()" title="Auto-scroll to latest">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 13 12 18 17 13"/><polyline points="7 6 12 11 17 6"/></svg>
+              <span>LOCK</span>
+            </button>
+            <button class="btn-sm" onclick="fetchLiveLogs(true)" title="Force Refresh">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Terminal Console Window -->
+      <div class="terminal-console-card">
+        <div class="terminal-console-header">
+          <div class="terminal-dots">
+            <span class="term-dot dot-red"></span>
+            <span class="term-dot dot-yellow"></span>
+            <span class="term-dot dot-green"></span>
+            <span class="term-title">terminal64.exe // live stdout & mql5 stream</span>
+          </div>
+          <div class="terminal-meta" id="logMetaCount">0 logs</div>
+        </div>
+
+        <div id="logsConsoleContainer" class="terminal-console-body">
+          <div class="log-loading-placeholder">
+            <span class="pulse-dot"></span> Streaming live MT5 terminal logs...
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 6: ANALYTICS & HISTORY -->
+    <section id="tab-history" class="tab-pane">
+      <div class="section-title-bar">
+        <h2>Execution Ledger & Reports</h2>
+      </div>
+
+      <!-- Evaluation Progress Card -->
+      <div class="card glass-card">
+        <div class="card-header-flex">
+          <h3>SHARK EVALUATION PROGRESS</h3>
+          <span class="badge-account">PHASE 1 (8% TARGET)</span>
+        </div>
+        <p class="text-muted">Target evaluation profit floor and rule verification for Shark Funded $10,000 account.</p>
+        
+        <div class="meter-group" style="margin-top: 10px;">
+          <div class="meter-label">
+            <span>Target Profit ($800.00 to pass)</span>
+            <span class="text-emerald">$131.25 (16.4% Passed)</span>
+          </div>
+          <div class="meter-bar-bg">
+            <div class="meter-bar-fill meter-emerald" style="width: 16.4%;"></div>
+          </div>
+        </div>
+
+        <div class="stats-grid" style="margin-top: 12px;">
+          <div class="stat-box">
+            <span class="stat-label">Min Trading Days</span>
+            <span class="stat-value">5 / 5 Done</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-label">Trading Rule</span>
+            <span class="stat-value text-emerald">100% Passed</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card glass-card">
+        <h3>Closed Deals History</h3>
+        <div id="tradeHistoryList" class="history-list">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 6: VPS & CLOUD HEALTH -->
+    <section id="tab-system" class="tab-pane">
+      <div class="section-title-bar">
+        <h2>Cloud VPS & Free-Tier Guard</h2>
+      </div>
+
+      <div class="card glass-card">
+        <div class="card-header-flex">
+          <h3>AWS EC2 Telemetry</h3>
+          <span class="badge-account">t3.micro (Mumbai)</span>
+        </div>
+        
+        <div class="gauge-grid">
+          <div class="gauge-card">
+            <span class="gauge-title">CPU Utilization</span>
+            <div class="gauge-val" id="cpuPercent">1.8%</div>
+            <div class="gauge-sub">1 vCPU Burstable</div>
+          </div>
+          <div class="gauge-card">
+            <span class="gauge-title">RAM Usage</span>
+            <div class="gauge-val" id="ramPercent">48.2%</div>
+            <div class="gauge-sub" id="ramDetail">0.48 GB / 1.0 GB</div>
+          </div>
+          <div class="gauge-card">
+            <span class="gauge-title">SSD Storage</span>
+            <div class="gauge-val" id="diskPercent">34.1%</div>
+            <div class="gauge-sub" id="diskDetail">19.8 GB Free</div>
+          </div>
+          <div class="gauge-card">
+            <span class="gauge-title">Terminal64 PID</span>
+            <div class="gauge-val text-emerald" id="mt5Status">ACTIVE</div>
+            <div class="gauge-sub" id="mt5Ram">182 MB RAM</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card glass-card">
+        <h3>AWS Free-Tier Egress Shield</h3>
+        <p class="text-muted">Monitors outbound telemetry to prevent exceeding the AWS 100 GB/month free egress ceiling.</p>
+        <div class="meter-group">
+          <div class="meter-label">
+            <span>Monthly Data Transfer (100.0 GB Limit)</span>
+            <span id="awsEgressText">0.015 GB / 0.015%</span>
+          </div>
+          <div class="meter-bar-bg">
+            <div id="awsEgressBar" class="meter-bar-fill meter-emerald" style="width: 1%;"></div>
+          </div>
+        </div>
+        <div class="free-tier-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>Free-Tier Protected (100% Free of Extra Billing)</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- EMERGENCY PANIC CONFIRMATION MODAL -->
+  <div id="panicModal" class="modal-overlay">
+    <div class="modal-content glass-card">
+      <div class="modal-icon-alert">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <h3>CONFIRM EMERGENCY CLOSE</h3>
+      <p>This will instantly send market exit orders to Shark Funded for <strong>ALL active positions</strong> and delete pending orders.</p>
+      
+      <div class="hold-to-confirm-wrapper">
+        <button id="holdConfirmBtn" class="btn-panic-confirm">
+          <span class="hold-progress" id="holdProgressBar"></span>
+          <span class="hold-text" id="holdText">PRESS & HOLD 2s TO EXECUTE</span>
+        </button>
+      </div>
+
+      <button class="btn-cancel" onclick="closePanicModal()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- PIN SECURITY GATE MODAL -->
+  <div id="pinGateModal" class="modal-overlay">
+    <div class="modal-content glass-card pin-card">
+      <div class="pin-shield-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3 class="pin-title">SECURITY GATE</h3>
+      <p class="pin-sub">Enter 4-Digit Security PIN to Unlock Controls</p>
+
+      <div class="pin-dots-display" id="pinDotsRow">
+        <span class="pin-dot"></span>
+        <span class="pin-dot"></span>
+        <span class="pin-dot"></span>
+        <span class="pin-dot"></span>
+      </div>
+      <div class="pin-error-text" id="pinErrorMsg">Incorrect Security PIN</div>
+
+      <!-- High-Tech Numpad -->
+      <div class="numpad-grid">
+        <button class="num-key" onclick="enterPinDigit('1')">1</button>
+        <button class="num-key" onclick="enterPinDigit('2')">2</button>
+        <button class="num-key" onclick="enterPinDigit('3')">3</button>
+        <button class="num-key" onclick="enterPinDigit('4')">4</button>
+        <button class="num-key" onclick="enterPinDigit('5')">5</button>
+        <button class="num-key" onclick="enterPinDigit('6')">6</button>
+        <button class="num-key" onclick="enterPinDigit('7')">7</button>
+        <button class="num-key" onclick="enterPinDigit('8')">8</button>
+        <button class="num-key" onclick="enterPinDigit('9')">9</button>
+        <button class="num-key action" onclick="clearPinDigits()">C</button>
+        <button class="num-key" onclick="enterPinDigit('0')">0</button>
+        <button class="num-key action" onclick="deletePinDigit()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/><line x1="18" y1="9" x2="12" y2="15"/><line x1="12" y1="9" x2="18" y2="15"/></svg>
+        </button>
+      </div>
+      <div class="pin-hint">Default Master PIN: <strong>7777</strong></div>
+    </div>
+  </div>
+
+  <!-- FLOATING BOTTOM NAVIGATION BAR -->
+  <nav class="bottom-nav">
+    <button class="nav-item active" onclick="switchTab('dashboard')" id="nav-dashboard">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      <span>Dashboard</span>
+    </button>
+    <button class="nav-item" onclick="switchTab('trades')" id="nav-trades">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      <span>Trades</span>
+      <span class="nav-badge" id="navTradeBadge">2</span>
+    </button>
+    <button class="nav-item" onclick="switchTab('algos')" id="nav-algos">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      <span>Algos</span>
+    </button>
+    <button class="nav-item" onclick="switchTab('news')" id="nav-news">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      <span>News</span>
+    </button>
+    <button class="nav-item" onclick="switchTab('logs')" id="nav-logs">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+      <span>Logs</span>
+    </button>
+    <button class="nav-item" onclick="switchTab('history')" id="nav-history">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span>History</span>
+    </button>
+    <button class="nav-item" onclick="switchTab('system')" id="nav-system">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+      <span>Cloud</span>
+    </button>
+  </nav>
+
+  <!-- PWA Service Worker & Logic -->
+  <script src="/js/app.js?v=3.7"></script>
+</body>
+</html>

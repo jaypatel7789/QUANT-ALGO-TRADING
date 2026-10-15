@@ -1,0 +1,57 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "1. Start OmniRoute Gateway (:20128)",
+      "type": "shell",
+      "command": "node gateway/start_gateway.js",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "2. Launch Multi-Agent Dashboard (:8090)",
+      "type": "shell",
+      "command": ".\\venv\\Scripts\\python dashboard/server.py",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "3. Run End-to-End System Test",
+      "type": "shell",
+      "command": ".\\venv\\Scripts\\python test_setup.py",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "4. Index Workspace with Graphify",
+      "type": "shell",
+      "command": ".\\venv\\Scripts\\python -c \"from core.skills.graphify_skill import GraphifySkill; print(GraphifySkill('.').index_codebase())\"",
+      "problemMatcher": []
+    },
+    {
+      "label": "5. Launch Multi-Agent Brain Terminal",
+      "type": "shell",
+      "command": ".\\venv\\Scripts\\python cli.py",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true,
+        "focus": true
+      }
+    }
+  ]
+}
