@@ -2,9 +2,9 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "1. Start OmniRoute Gateway (:20128)",
+      "label": "1. Start MT5 Sentinel Backend (:8080)",
       "type": "shell",
-      "command": "node gateway/start_gateway.js",
+      "command": ".\\venv\\Scripts\\python mobile_app/backend/server.py",
       "isBackground": true,
       "problemMatcher": [],
       "presentation": {
@@ -14,21 +14,9 @@
       }
     },
     {
-      "label": "2. Launch Multi-Agent Dashboard (:8090)",
+      "label": "2. Run Institutional Trading Unit Tests",
       "type": "shell",
-      "command": ".\\venv\\Scripts\\python dashboard/server.py",
-      "isBackground": true,
-      "problemMatcher": [],
-      "presentation": {
-        "reveal": "always",
-        "panel": "dedicated",
-        "clear": true
-      }
-    },
-    {
-      "label": "3. Run End-to-End System Test",
-      "type": "shell",
-      "command": ".\\venv\\Scripts\\python test_setup.py",
+      "command": ".\\venv\\Scripts\\python -m unittest tests/test_institutional_trading.py",
       "problemMatcher": [],
       "presentation": {
         "reveal": "always",
@@ -36,21 +24,13 @@
       }
     },
     {
-      "label": "4. Index Workspace with Graphify",
+      "label": "3. Run Quantitative Research Matrix",
       "type": "shell",
-      "command": ".\\venv\\Scripts\\python -c \"from core.skills.graphify_skill import GraphifySkill; print(GraphifySkill('.').index_codebase())\"",
-      "problemMatcher": []
-    },
-    {
-      "label": "5. Launch Multi-Agent Brain Terminal",
-      "type": "shell",
-      "command": ".\\venv\\Scripts\\python cli.py",
+      "command": ".\\venv\\Scripts\\python core/quant_monthly_matrix.py",
       "problemMatcher": [],
       "presentation": {
         "reveal": "always",
-        "panel": "dedicated",
-        "clear": true,
-        "focus": true
+        "panel": "shared"
       }
     }
   ]

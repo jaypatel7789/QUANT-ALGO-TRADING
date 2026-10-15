@@ -59,7 +59,7 @@ hero_svg = f'''<svg width="1200" height="340" viewBox="0 0 1200 340" fill="none"
   <!-- Top Badge -->
   <rect x="420" y="28" width="360" height="28" rx="14" fill="#0f172a" stroke="#00f2fe" stroke-opacity="0.4" stroke-width="1.2"/>
   <circle cx="438" cy="42" r="4" fill="#10b981"/>
-  <text x="452" y="47" font-family="{FONT_MONO}" font-size="11" font-weight="600" fill="#38bdf8" letter-spacing="1.5">INSTITUTIONAL QUANT MULTI-AGENT</text>
+  <text x="452" y="47" font-family="{FONT_MONO}" font-size="11" font-weight="600" fill="#38bdf8" letter-spacing="1.5">INSTITUTIONAL QUANTITATIVE SUITE</text>
 
   <!-- Title -->
   <text x="600" y="112" font-family="{FONT_TITLE}" font-size="44" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="-0.5">
@@ -71,7 +71,7 @@ hero_svg = f'''<svg width="1200" height="340" viewBox="0 0 1200 340" fill="none"
 
   <!-- Subtitle Description -->
   <text x="600" y="196" font-family="{FONT_TITLE}" font-size="13.5" fill="#94a3b8" text-anchor="middle">
-    Multi-Agent Quantitative Alpha Generation • Real Interbank MT5 Tick Verification • Low-Latency Cloud Bridge • Zero-Trust Mobile PWA
+    Systematic Quantitative Alpha Generation • Real Interbank MT5 Tick Verification • Low-Latency Cloud Bridge • Zero-Trust Mobile PWA
   </text>
 
   <!-- Metric Badges Row -->
@@ -113,8 +113,9 @@ arch_svg = f'''<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none"
     SHARK MT5 SENTINEL — END-TO-END PRODUCTION ARCHITECTURE
   </text>
   <text x="600" y="70" font-family="{FONT_MONO}" font-size="12" fill="#94a3b8" text-anchor="middle">
-    High-Frequency Data Ingestion • Multi-Agent Optimization • Cloud VPS Bridge • Mobile Command Center
+    High-Frequency Data Ingestion • Multi-Strategy Optimization • Cloud VPS Bridge • Mobile Command Center
   </text>
+
 
   <!-- TIER 1: DATA INGESTION & MARKET MICROSTRUCTURE -->
   <g transform="translate(40, 100)">

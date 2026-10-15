@@ -14,8 +14,9 @@
     SHARK MT5 SENTINEL — END-TO-END PRODUCTION ARCHITECTURE
   </text>
   <text x="600" y="70" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#94a3b8" text-anchor="middle">
-    High-Frequency Data Ingestion • Multi-Agent Optimization • Cloud VPS Bridge • Mobile Command Center
+    High-Frequency Data Ingestion • Multi-Strategy Optimization • Cloud VPS Bridge • Mobile Command Center
   </text>
+
 
   <!-- TIER 1: DATA INGESTION & MARKET MICROSTRUCTURE -->
   <g transform="translate(40, 100)">

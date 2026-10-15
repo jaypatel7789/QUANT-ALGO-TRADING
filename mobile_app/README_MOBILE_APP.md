@@ -36,10 +36,10 @@ A production-grade, ultra-lightweight mobile Progressive Web App (PWA) designed 
 
 ### Step 1: Launch Local Server
 Double-click:
-`F:\multi agent\mobile_app\start_mobile_app.bat`  
+`mobile_app\start_mobile_app.bat`  
 Or run in terminal:
 ```powershell
-cd "F:\multi agent\mobile_app\backend"
+cd mobile_app\backend
 python -m uvicorn server:app --host 0.0.0.0 --port 8080
 ```
 

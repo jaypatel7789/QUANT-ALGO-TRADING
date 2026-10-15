@@ -3,7 +3,7 @@
 <img src="assets/hero_banner.svg" alt="Shark MT5 Sentinel Banner" width="100%" />
 
 # 🦈 SHARK MT5 SENTINEL
-### Institutional Quantitative Multi-Agent Platform & 24/7 Cloud Production Sentinel
+### Institutional Multi-Strategy Quantitative Execution Platform & 24/7 Cloud Production Sentinel
 
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%20%7C%203.11-38bdf8?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![MetaTrader 5](https://img.shields.io/badge/MetaTrader%205-Build%204400+-f59e0b?style=for-the-badge&logo=metatrader&logoColor=white)](https://www.metatrader5.com/)
@@ -15,7 +15,7 @@
 
 <p align="center">
   <b>A production-grade, systematic quantitative trading ecosystem designed for high-capital institutional execution and proprietary trading firm risk compliance.</b><br/>
-  Featuring real-time interbank tick ingestion, multi-agent walk-forward optimization, sub-millisecond execution retry ladders, and a zero-trust mobile command center.
+  Featuring real-time interbank tick ingestion, systematic walk-forward parameter optimization, sub-millisecond execution retry ladders, and a zero-trust mobile command center.
 </p>
 
 [System Architecture](#-system-architecture) •
@@ -34,7 +34,7 @@
 
 The **Shark MT5 Sentinel Platform** bridges the gap between high-level academic quantitative research and real-world high-stakes production trading. Built to survive real interbank market conditions, the platform orchestrates:
 
-1. **Multi-Agent Quantitative Modeling Engine**: Ingests millisecond interbank ticks, Level-2 order book depth, options implied volatility surfaces, and macroeconomic data to synthesize institutional trading strategies.
+1. **Multi-Strategy Systematic Modeling Engine**: Ingests millisecond interbank ticks, Level-2 order book depth, options implied volatility surfaces, and macroeconomic data to synthesize institutional trading strategies.
 2. **Prop-Firm Compliance Testing Harness**: Every algorithm undergoes a mandatory 1-year, 100% real-tick walk-forward verification against actual historical spreads, dynamic rollover swaps, and random slippage injection.
 3. **Shark MT5 Sentinel Cloud VPS Bridge**: A resilient, 24/7 background daemon running on an **AWS EC2 Windows Server** instance, interfacing directly with native 64-bit MetaTrader 5 via low-latency Python IPC.
 4. **Mobile Command Center (PWA)**: A dark-glassmorphism mobile progressive web application accessible securely from anywhere in the world over encrypted Cloudflare Zero-Trust tunnels, protected by SHA-256 PIN authentication and hardware biometrics.
@@ -56,7 +56,7 @@ The platform is architected into 5 distinct decoupled tiers to ensure zero-lag e
 | Tier | Component | Technology Stack | Latency / Throughput | Core Responsibility |
 |:---:|:---|:---|:---:|:---|
 | **Tier 1** | **Data Ingestion & Microstructure** | Python, Binance L2, Interbank Tick API | < 50ms ingestion | Real-tick recording, VPIN flow toxicity bucketing, Kyle's Lambda price impact, Deribit IV smile skew, and ForexFactory calendar scraping. |
-| **Tier 2** | **Quant Optimization Engine** | C++ MQL5, NumPy, SciPy, Multi-Agent | 100% Real-Tick Tester | Systematic strategy generation, parameter walk-forward optimization, Monte Carlo trade permutation (99% confidence), and prop-firm compliance gating. |
+| **Tier 2** | **Quant Optimization Engine** | C++ MQL5, NumPy, SciPy, VectorBT | 100% Real-Tick Tester | Systematic strategy generation, parameter walk-forward optimization, Monte Carlo trade permutation (99% confidence), and prop-firm compliance gating. |
 | **Tier 3** | **Cloud Sentinel VPS Bridge** | FastAPI, MetaTrader5 IPC, WebSockets | < 5ms local IPC | 24/7 AWS EC2 background daemon, atomic JSON policy synchronization, broker fill retry ladder (IOC/FOK/Return), and emergency liquidation watchdog. |
 | **Tier 4** | **Cloudflare Zero-Trust Tunnel** | Cloudflare Edge, Anycast, TLS 1.3 | < 25ms edge routing | Encrypted reverse-proxy exposing port `8080` to authenticated mobile clients without opening a single inbound firewall port on AWS. |
 | **Tier 5** | **Mobile Command Center (PWA)** | Vanilla HTML5, Modern CSS, WebSockets | 60 FPS Canvas render | Real-time equity trajectory, prop-firm daily loss floor tracking, 16 individual strategy switches, news volatility shield, and 2-second hold panic liquidation. |

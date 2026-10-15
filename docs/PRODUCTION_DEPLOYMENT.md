@@ -36,7 +36,7 @@ This document outlines the exact deployment workflow for running the **Shark MT5
 Double-click `cloud_deploy\run_sentinel_cloud_service.bat` or run:
 
 ```cmd
-cd F:\multi agent
+cd C:\QUANT-ALGO-TRADING
 cloud_deploy\run_sentinel_cloud_service.bat
 ```
 

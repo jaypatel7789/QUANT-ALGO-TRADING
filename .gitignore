@@ -4,19 +4,22 @@
 !.env.example
 .local_session_token
 
-# Virtual environment and node
+# Virtual environment and dependencies
 venv/
 node_modules/
 
-# Python cache
+# Python cache and local state
 __pycache__/
 *.py[cod]
 *$py.class
 *.sqlite3
 *.db
 
-# Cloned repositories (external sources)
+# Cloned repositories & external tools
 repos/
+gateway/
+dashboard/
+benchmarks/
 
 # Execution workspace output and temp
 workspace/
@@ -52,6 +55,33 @@ mobile_app/backend/cloudflared.exe
 mobile_app/backend/tunnel.log
 mobile_app/backend/nohup.out
 research/PREVIOUS_SESSION_CHAT_HISTORY.md
-*.zip
 
-
+# Legacy/Auxiliary Scaffolds
+.agents/
+AGENTS.md
+core/agents/
+core/skills/
+core/models/
+core/brain.py
+core/mcp_server.py
+core/config.py
+core/orchestrator.py
+core/executor.py
+core/security/
+core/storage/
+core/verification/
+restore_old_chat.bat
+IMPROVEMENT_PLAN.md
+VERIFICATION_REPORT.md
+PROJECT_REPORT.md
+OPERATIONS.md
+cli.py
+test_setup.py
+start_all.bat
+start_all.ps1
+start_cli.bat
+start_cli.ps1
+start_quantdinger.bat
+docker-compose.yml
+package.json
+package-lock.json

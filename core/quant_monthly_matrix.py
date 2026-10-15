@@ -1,5 +1,5 @@
 """
-Institutional Multi-Agent 1-Year Backtest & Monthly Profit Consistency Engine
+Institutional Multi-Strategy Systematic 1-Year Backtest & Monthly Profit Consistency Engine
 Evaluates quantitative strategies across 12 calendar months on MetaTrader 5 historical data.
 Ensures every month is profitable, with strict funded account drawdown protection.
 """
